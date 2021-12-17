@@ -7,8 +7,9 @@ import java.io.{InputStreamReader, Reader}
 object JsRunner extends App {
 
   final case class Child(z: String)
+
   final case class SomeClass(y: String) {
-    def x: Child = Child(y)
+    def x: String = y
   }
 
   def makeHtml(str: String): String = {
@@ -19,7 +20,7 @@ object JsRunner extends App {
     try {
       val source = Source.newBuilder("js", new InputStreamReader(getClass.getResourceAsStream("s.mjs")): Reader, "s.mjs").mimeType("application/javascript+module").build
       val exports = context.eval(source)
-      exports.getMember("Foo").newInstance().invokeMember("makeMe", SomeClass("x")).toString
+      exports.getMember("Food").newInstance().invokeMember("makeMe", SomeClass("x")).toString
     } finally context.close()
   }
 }

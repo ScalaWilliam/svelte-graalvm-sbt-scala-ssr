@@ -3,15 +3,10 @@ import App from './App.svelte'
 interface ipt {
     x: string;
 }
-
-export class Foo {
+export class Food {
     makeMe(x) {
-        console.log(x);
-        const z: ipt = {
-            x: x.x().z()
-        };
         const {html} = (App as any).render({
-            ipt: z
+            ipt: x
         })
         return html;
     }

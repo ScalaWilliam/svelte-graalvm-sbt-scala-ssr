@@ -1,3 +1,5 @@
-<script>
-	export let ipt;
-</script><b>{ipt.x}!</b>
+<script type="ts">
+    import type {Foo} from 'Foo';
+
+    export let ipt: Foo;
+</script><b>{ipt.x()}!</b>

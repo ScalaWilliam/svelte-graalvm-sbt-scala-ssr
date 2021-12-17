@@ -2,8 +2,7 @@ import svelte from 'rollup-plugin-svelte';
 import resolve from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
 import commonjs from '@rollup/plugin-commonjs';
-import livereload from 'rollup-plugin-livereload';
-import {terser} from 'rollup-plugin-terser';
+import sveltePreprocess from "svelte-preprocess";
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -18,6 +17,7 @@ export default {
         typescript(),
         svelte({
             hydratable: true,
+            preprocess: sveltePreprocess(),
             immutable: true,
             generate: "ssr",
             // enable run-time checks when not in production
