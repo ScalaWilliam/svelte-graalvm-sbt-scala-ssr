@@ -1,16 +1,25 @@
 package gr
 
-import org.graalvm.polyglot.{Context, Source}
+import org.graalvm.polyglot.{Context, HostAccess, Source}
+
 import java.io.{InputStreamReader, Reader}
 
 object JsRunner extends App {
+
+  final case class Child(z: String)
+  final case class SomeClass(y: String) {
+    def x: Child = Child(y)
+  }
+
   def makeHtml(str: String): String = {
     val context = Context.newBuilder("js").allowIO(true).option("js.esm-eval-returns-exports", "true")
+      .allowHostAccess(HostAccess.ALL)
+      .allowHostClassLookup(_ => true)
       .allowExperimentalOptions(true).build
     try {
       val source = Source.newBuilder("js", new InputStreamReader(getClass.getResourceAsStream("s.mjs")): Reader, "s.mjs").mimeType("application/javascript+module").build
       val exports = context.eval(source)
-      exports.getMember("Foo").newInstance().invokeMember("makeMe", str).toString
+      exports.getMember("Foo").newInstance().invokeMember("makeMe", SomeClass("x")).toString
     } finally context.close()
   }
 }

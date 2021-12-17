@@ -71,9 +71,9 @@ var Foo = /** @class */ (function () {
     function Foo() {
     }
     Foo.prototype.makeMe = function (x) {
+        console.log(x);
         var z = {
-            x: x,
-            y: x + x
+            x: x.x().z()
         };
         var html = App.render({
             ipt: z

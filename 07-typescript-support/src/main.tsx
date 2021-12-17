@@ -2,14 +2,13 @@ import App from './App.svelte'
 
 interface ipt {
     x: string;
-    y: string;
 }
 
 export class Foo {
     makeMe(x) {
+        console.log(x);
         const z: ipt = {
-            x: x,
-            y: x + x
+            x: x.x().z()
         };
         const {html} = (App as any).render({
             ipt: z
