@@ -64,16 +64,23 @@ function create_ssr_component(fn) {
 const App = create_ssr_component(($$result, $$props, $$bindings, $$slots) => {
 	let { ipt } = $$props;
 	if ($$props.ipt === void 0 && $$bindings.ipt && ipt !== void 0) $$bindings.ipt(ipt);
-	return `<b>${escape(ipt)}!</b>`;
+	return `<b>${escape(ipt.x)}!</b>`;
 });
 
-class Foo {
-    makeMe(x) {
-        const {html} = App.render({
-            ipt: x
-        });
-        return html;
+var Foo = /** @class */ (function () {
+    function Foo() {
     }
-}
+    Foo.prototype.makeMe = function (x) {
+        var z = {
+            x: x,
+            y: x + x
+        };
+        var html = App.render({
+            ipt: z
+        }).html;
+        return html;
+    };
+    return Foo;
+}());
 
 export { Foo };

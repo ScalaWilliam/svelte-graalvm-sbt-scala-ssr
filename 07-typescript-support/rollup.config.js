@@ -1,5 +1,6 @@
 import svelte from 'rollup-plugin-svelte';
 import resolve from '@rollup/plugin-node-resolve';
+import typescript from '@rollup/plugin-typescript';
 import commonjs from '@rollup/plugin-commonjs';
 import livereload from 'rollup-plugin-livereload';
 import {terser} from 'rollup-plugin-terser';
@@ -7,13 +8,14 @@ import {terser} from 'rollup-plugin-terser';
 const production = !process.env.ROLLUP_WATCH;
 
 export default {
-    input: 'src/main.js',
+    input: 'src/main.tsx',
     output: {
         format: 'es',
         file: '../src/main/resources/gr/s.mjs',
         exports: 'named',
     },
     plugins: [
+        typescript(),
         svelte({
             hydratable: true,
             immutable: true,
