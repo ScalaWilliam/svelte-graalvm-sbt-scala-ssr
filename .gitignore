@@ -3,3 +3,6 @@ target/
 .idea
 .bsp
 .vscode
+node_modules
+build
+.DS_Store
