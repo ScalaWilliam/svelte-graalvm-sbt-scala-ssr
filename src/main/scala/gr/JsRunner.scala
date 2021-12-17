@@ -6,12 +6,6 @@ import java.io.{InputStreamReader, Reader}
 
 object JsRunner extends App {
 
-  final case class Child(z: String)
-
-  final case class SomeClass(y: String) {
-    def x: String = y
-  }
-
   def makeHtml(str: String): String = {
     val context = Context.newBuilder("js").allowIO(true).option("js.esm-eval-returns-exports", "true")
       .allowHostAccess(HostAccess.ALL)
@@ -20,7 +14,8 @@ object JsRunner extends App {
     try {
       val source = Source.newBuilder("js", new InputStreamReader(getClass.getResourceAsStream("s.mjs")): Reader, "s.mjs").mimeType("application/javascript+module").build
       val exports = context.eval(source)
-      exports.getMember("Food").newInstance().invokeMember("makeMe", SomeClass("x")).toString
+      exports.getMember("Food").newInstance().invokeMember("makeMe", SomeClass(str)).toString
     } finally context.close()
   }
+
 }

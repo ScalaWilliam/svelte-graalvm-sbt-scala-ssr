@@ -7,3 +7,5 @@ libraryDependencies ++= Seq("org.scalatest" %% "scalatest" % "3.2.10" % Test,
 )
 
 Global / onChangedBuildSource := ReloadOnSourceChanges
+
+enablePlugins(TypeScriptGeneratorPlugin)

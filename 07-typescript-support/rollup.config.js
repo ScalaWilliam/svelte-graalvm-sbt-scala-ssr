@@ -14,7 +14,9 @@ export default {
         exports: 'named',
     },
     plugins: [
-        typescript(),
+        typescript({
+            // declaration: true
+        }),
         svelte({
             hydratable: true,
             preprocess: sveltePreprocess(),

@@ -1,5 +1,5 @@
 <script type="ts">
-    import type {Foo} from 'Foo';
+    import type {SomeClass} from 'SomeClass';
 
-    export let ipt: Foo;
-</script><b>{ipt.x()}!</b>
+    export let ipt: SomeClass;
+</script><b>{ipt.ch().z()}!</b>

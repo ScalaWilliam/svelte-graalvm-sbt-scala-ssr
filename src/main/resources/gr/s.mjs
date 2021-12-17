@@ -65,7 +65,7 @@ const App = create_ssr_component(($$result, $$props, $$bindings, $$slots) => {
 	
 	let { ipt } = $$props;
 	if ($$props.ipt === void 0 && $$bindings.ipt && ipt !== void 0) $$bindings.ipt(ipt);
-	return `<b>${escape(ipt.x())}!</b>`;
+	return `<b>${escape(ipt.ch().z())}!</b>`;
 });
 
 var Food = /** @class */ (function () {
