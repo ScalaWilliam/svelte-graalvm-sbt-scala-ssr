@@ -4,7 +4,7 @@ import org.graalvm.polyglot.{Context, HostAccess, Source}
 
 import java.io.{InputStreamReader, Reader}
 
-object JsRunner extends App {
+object JsRunner {
 
   def makeHtml(str: String): String = {
     val context = Context.newBuilder("js").allowIO(true).option("js.esm-eval-returns-exports", "true")
