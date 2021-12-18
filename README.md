@@ -8,9 +8,11 @@ No wiring is done for serving HTTP - the proof is in the pudding of JsRunnerSpec
 
 ```
 # first terminal: this will compile the Svelte code
-npm run dev
+$ cd frontend
+$ npm install
+$ npm run dev
 # second terminal: this will run the unit test
-sbt testQuick
+$ sbt testQuick
 ```
 
 ## Requirements
