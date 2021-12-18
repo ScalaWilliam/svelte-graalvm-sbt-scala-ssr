@@ -1,6 +1,6 @@
 # svelte-graalvm-sbt-scala-ssr
 
-SSR (server-side rendering) of Svelte & GraalVM, with Svelte code calling Scala case classes directly using TypeScript definitions.
+SSR (server-side rendering) of Svelte on GraalVM/JDK/Java, with Svelte code calling Scala case classes directly using TypeScript definitions.
 
 No wiring is done for serving HTTP - the proof is in the pudding of JsRunnerSpec which is has a unit test to validate the behavior.
 
